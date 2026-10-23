@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive Stack using Linked List visualizer.">
+  <title>Stack Using Linked List | Data Structure Lab</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-mark" aria-hidden="true">DS</div>
+      <div>
+        <p class="eyebrow">DATA STRUCTURE LAB</p>
+        <h1>Stack Using Linked List</h1>
+        <p class="subtitle">Explore LIFO operations with an interactive node visualizer.</p>
+      </div>
+    </div>
+  </header>
+  <main class="layout">
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">CONTROL CENTER</p><h2>Stack Operations</h2></div>
+        <span class="badge">Dynamic size</span>
+      </div>
+      <div class="operation-grid">
+        <form class="operation-card" id="pushForm">
+          <div class="operation-icon push-icon">+</div><h3>Push</h3>
+          <p>Add a new node to the top of the stack.</p>
+          <label for="pushValue">Value</label>
+          <input id="pushValue" type="number" step="1" placeholder="Enter an integer" required>
+          <button class="button primary" type="submit">Push to stack ↗</button>
+        </form>
+        <div class="operation-card">
+          <div class="operation-icon pop-icon">−</div><h3>Pop</h3>
+          <p>Remove the current top node from the stack.</p>
+          <div class="spacer"></div><button class="button danger" id="popBtn" type="button">Pop top node</button>
+        </div>
+        <form class="operation-card" id="searchForm">
+          <div class="operation-icon search-icon">⌕</div><h3>Search</h3>
+          <p>Find a value and highlight its node.</p>
+          <label for="searchValue">Value</label>
+          <input id="searchValue" type="number" step="1" placeholder="Enter an integer" required>
+          <button class="button secondary" type="submit">Search stack</button>
+        </form>
+        <div class="operation-card">
+          <div class="operation-icon display-icon">↔</div><h3>Display</h3>
+          <p>Refresh the visual state and view all nodes.</p>
+          <div class="spacer"></div><button class="button secondary" id="displayBtn" type="button">Display stack</button>
+        </div>
+      </div>
+      <div class="utility-row">
+        <p class="utility-note"><span class="status-dot"></span> Every operation updates the visualizer.</p>
+        <button class="button quiet" id="clearBtn" type="button">Clear stack</button>
+      </div>
+      <div id="status" class="status-message" role="status" aria-live="polite">Ready. Push a value to create the first node.</div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">LIVE VISUALIZATION</p><h2>Current Stack</h2></div>
+        <span class="badge teal">LIFO</span>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><span class="stat-label">Total nodes</span><strong id="sizeLabel">0</strong></div>
+        <div class="stat-card"><span class="stat-label">Top value</span><strong id="topLabel">—</strong></div>
+        <div class="stat-card"><span class="stat-label">Structure</span><strong>Linked list</strong></div>
+      </div>
+      <div class="visualization-frame">
+        <div class="stack-column">
+          <div id="topPointer" class="top-pointer" hidden><span class="pointer-line"></span><span>TOP</span></div>
+          <div id="stackView" class="stack-view">
+            <div class="empty-state"><div class="empty-symbol">∅</div><strong>Your stack is empty</strong><span>Push a value to create a node.</span></div>
+          </div>
+          <div class="stack-end">NULL · END OF STACK</div>
+        </div>
+        <div class="legend">
+          <span><i class="swatch top-swatch"></i> Top node</span>
+          <span><i class="swatch link-swatch"></i> Next pointer</span>
+          <span><i class="swatch found-swatch"></i> Search result</span>
+        </div>
+      </div>
+      <div class="concept-note"><div class="info-icon">i</div><p><strong>Remember:</strong> A stack follows <b>Last In, First Out</b>. Push inserts at the head, and Pop removes from the head. Each node stores a value and a pointer to the next node.</p></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">STRUCTURE DETAILS</p><h2>Node Sequence</h2></div></div>
+      <p class="details-description">The list is traversed from the top node to the last node. This sequence mirrors the current stack.</p>
+      <div id="sequenceView" class="sequence-view">No nodes to display.</div>
+    </section>
+    <footer class="page-footer"><span>Data Structure Lab</span><span>Built with HTML · CSS · JavaScript</span></footer>
+  </main>
+</body>
+</html>
